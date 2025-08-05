@@ -1,0 +1,362 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #f5f5f5;
+    color: #333;
+    line-height: 1.5;
+}
+
+.container {
+    width: 600px;
+    max-height: 700px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 24px;
+    text-align: center;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.subtitle {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.main {
+    padding: 24px;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.section {
+    margin-bottom: 32px;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #333;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 8px;
+}
+
+/* Режим работы */
+.mode-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.radio-option {
+    display: flex;
+    align-items: flex-start;
+    padding: 16px;
+    border: 2px solid #e1e5e9;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.radio-option:hover {
+    border-color: #667eea;
+    background: #f8f9ff;
+}
+
+.radio-option input[type="radio"] {
+    display: none;
+}
+
+.radio-option input[type="radio"]:checked + .radio-custom {
+    background: #667eea;
+    border-color: #667eea;
+}
+
+.radio-option input[type="radio"]:checked + .radio-custom::after {
+    opacity: 1;
+}
+
+.radio-custom {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    margin-right: 12px;
+    margin-top: 2px;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.radio-custom::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.option-content strong {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.option-content p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Формы */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.form-select,
+.form-input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e1e5e9;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.2s ease;
+}
+
+.form-select:focus,
+.form-input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.input-group {
+    position: relative;
+}
+
+.toggle-btn {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 4px;
+}
+
+.form-help {
+    font-size: 12px;
+    color: #666;
+    margin-top: 6px;
+}
+
+/* Кнопки */
+.test-btn {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.test-btn:hover {
+    background: #218838;
+}
+
+.test-btn:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+}
+
+.test-result {
+    margin-top: 12px;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    display: none;
+}
+
+.test-result.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.test-result.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Чекбоксы */
+.checkbox-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+.checkbox-option input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox-custom {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #ddd;
+    border-radius: 3px;
+    margin-right: 12px;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.checkbox-option input[type="checkbox"]:checked + .checkbox-custom {
+    background: #667eea;
+    border-color: #667eea;
+}
+
+.checkbox-option input[type="checkbox"]:checked + .checkbox-custom::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* API информация */
+.api-info {
+    background: #f8f9fa;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.api-provider {
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.api-provider:last-child {
+    margin-bottom: 0;
+}
+
+.api-provider a {
+    color: #667eea;
+    text-decoration: none;
+    margin-left: 8px;
+}
+
+.api-provider a:hover {
+    text-decoration: underline;
+}
+
+/* Футер */
+.footer {
+    background: #f8f9fa;
+    padding: 20px 24px;
+    border-top: 1px solid #e9ecef;
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+.save-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.save-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+}
+
+.reset-btn {
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.reset-btn:hover {
+    background: #5a6268;
+}
+
+/* Скроллбар */
+.main::-webkit-scrollbar {
+    width: 6px;
+}
+
+.main::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.main::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.main::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Анимации */
+.ai-settings {
+    transition: all 0.3s ease;
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

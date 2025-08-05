@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Настройки DataLens Formula Assistant</title>
+    <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Настройки</h1>
+            <p class="subtitle">DataLens Formula Assistant</p>
+        </header>
+        
+        <main class="main">
+            <!-- Выбор режима работы -->
+            <section class="section">
+                <h2 class="section-title">Режим работы</h2>
+                <div class="mode-selector">
+                    <label class="radio-option">
+                        <input type="radio" name="mode" value="local" id="mode-local" checked>
+                        <span class="radio-custom"></span>
+                        <div class="option-content">
+                            <strong>Локальный поиск</strong>
+                            <p>Быстрый поиск по встроенной базе функций DataLens</p>
+                        </div>
+                    </label>
+                    
+                    <label class="radio-option">
+                        <input type="radio" name="mode" value="ai" id="mode-ai">
+                        <span class="radio-custom"></span>
+                        <div class="option-content">
+                            <strong>AI-помощник</strong>
+                            <p>Интеллектуальные ответы от нейросети с использованием API</p>
+                        </div>
+                    </label>
+                </div>
+            </section>
+
+            <!-- Настройки AI -->
+            <section class="section ai-settings" id="ai-settings" style="display: none;">
+                <h2 class="section-title">Настройки нейросети</h2>
+                
+                <!-- Выбор провайдера -->
+                <div class="form-group">
+                    <label for="ai-provider" class="form-label">Провайдер AI:</label>
+                    <select id="ai-provider" class="form-select">
+                        <option value="claude">Claude (Anthropic)</option>
+                        <option value="deepseek">DeepSeek</option>
+                        <option value="openai">OpenAI</option>
+                    </select>
+                </div>
+
+                <!-- API ключ -->
+                <div class="form-group">
+                    <label for="api-key" class="form-label">API ключ:</label>
+                    <div class="input-group">
+                        <input 
+                            type="password" 
+                            id="api-key" 
+                            class="form-input" 
+                            placeholder="Введите ваш API ключ"
+                        >
+                        <button type="button" id="toggle-key" class="toggle-btn">👁️</button>
+                    </div>
+                    <p class="form-help">
+                        API ключ хранится локально в браузере и не передается третьим лицам
+                    </p>
+                </div>
+
+                <!-- Тест подключения -->
+                <div class="form-group">
+                    <button type="button" id="test-connection" class="test-btn">
+                        Проверить подключение
+                    </button>
+                    <div id="test-result" class="test-result"></div>
+                </div>
+            </section>
+
+            <!-- Дополнительные настройки -->
+            <section class="section">
+                <h2 class="section-title">Дополнительные настройки</h2>
+                
+                <label class="checkbox-option">
+                    <input type="checkbox" id="save-history" checked>
+                    <span class="checkbox-custom"></span>
+                    <span>Сохранять историю запросов</span>
+                </label>
+                
+                <label class="checkbox-option">
+                    <input type="checkbox" id="auto-copy" checked>
+                    <span class="checkbox-custom"></span>
+                    <span>Автоматически копировать синтаксис функций</span>
+                </label>
+            </section>
+
+            <!-- Информация -->
+            <section class="section">
+                <h2 class="section-title">Получение API ключей</h2>
+                <div class="api-info">
+                    <div class="api-provider">
+                        <strong>Claude (Anthropic):</strong>
+                        <a href="https://console.anthropic.com/" target="_blank">console.anthropic.com</a>
+                    </div>
+                    <div class="api-provider">
+                        <strong>DeepSeek:</strong>
+                        <a href="https://platform.deepseek.com/" target="_blank">platform.deepseek.com</a>
+                    </div>
+                    <div class="api-provider">
+                        <strong>OpenAI:</strong>
+                        <a href="https://platform.openai.com/api-keys" target="_blank">platform.openai.com</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="footer">
+            <button type="button" id="save-settings" class="save-btn">Сохранить настройки</button>
+            <button type="button" id="reset-settings" class="reset-btn">Сбросить</button>
+        </footer>
+    </div>
+    
+    <script src="ai-api.js"></script>
+    <script src="settings.js"></script>
+</body>
+</html>

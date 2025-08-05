@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Icon Generator</title>
+</head>
+<body>
+    <canvas id="canvas16" width="16" height="16" style="border: 1px solid #ccc; margin: 5px;"></canvas>
+    <canvas id="canvas32" width="32" height="32" style="border: 1px solid #ccc; margin: 5px;"></canvas>
+    <canvas id="canvas48" width="48" height="48" style="border: 1px solid #ccc; margin: 5px;"></canvas>
+    <canvas id="canvas128" width="128" height="128" style="border: 1px solid #ccc; margin: 5px;"></canvas>
+    
+    <script>
+        // Создание иконок разных размеров
+        function createIcon(size) {
+            const canvas = document.getElementById(`canvas${size}`);
+            const ctx = canvas.getContext('2d');
+            
+            // Создаем градиент
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#667eea');
+            gradient.addColorStop(1, '#764ba2');
+            
+            // Рисуем фон с закругленными углами
+            const radius = size * 0.15;
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.roundRect(0, 0, size, size, radius);
+            ctx.fill();
+            
+            // Рисуем текст f(x)
+            ctx.fillStyle = 'white';
+            ctx.font = `bold ${size * 0.25}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('f(x)', size/2, size * 0.4);
+            
+            // Рисуем DataLens
+            if (size >= 32) {
+                ctx.font = `${size * 0.1}px Arial`;
+                ctx.fillText('DataLens', size/2, size * 0.65);
+            }
+            
+            // Добавляем математические символы для больших иконок
+            if (size >= 48) {
+                ctx.font = `${size * 0.08}px Arial`;
+                ctx.globalAlpha = 0.6;
+                ctx.fillText('∑ ∫ √ ∞', size/2, size * 0.85);
+                ctx.globalAlpha = 1;
+            }
+        }
+        
+        // Создаем все иконки
+        [16, 32, 48, 128].forEach(createIcon);
+        
+        // Функция для скачивания иконки
+        function downloadIcon(size) {
+            const canvas = document.getElementById(`canvas${size}`);
+            const link = document.createElement('a');
+            link.download = `icon${size}.png`;
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+        
+        // Добавляем кнопки для скачивания
+        [16, 32, 48, 128].forEach(size => {
+            const button = document.createElement('button');
+            button.textContent = `Download ${size}x${size}`;
+            button.onclick = () => downloadIcon(size);
+            document.body.appendChild(button);
+        });
+    </script>
+</body>
+</html>
